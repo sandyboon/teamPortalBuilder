@@ -20,8 +20,7 @@ let renderedHtml = '';
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 async function init() {
-  console.log('************Welcome to the Team Portal Builder**************');
-  console.log('Please answer a few questions to build a portal for your team');
+  showWelcomeMessage();
   try {
     const managerInfo = await getManagerInfo();
     employeesInformation.push(managerInfo);
@@ -39,6 +38,14 @@ async function init() {
   } catch (error) {
     console.log(error);
   }
+}
+
+function showWelcomeMessage() {
+  console.log('************Welcome to the Team Portal Builder**************');
+  console.log(
+    'Please note that Employee ID will be generated *AUTOMATICALLY* for every employee you add!'
+  );
+  console.log('Please answer a few questions to build a portal for your team');
 }
 
 async function getManagerInfo() {
