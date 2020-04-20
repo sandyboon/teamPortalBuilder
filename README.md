@@ -17,7 +17,7 @@
 
 ## Description
 
-A utility for a team's manager to generate a Web page for their team. The generated Web page contains basic information about the team members. The Information is collected from the user in the command-line.
+A command line utility for a team's manager to generate a Web page for their team. The generated Web page contains basic information about the team members. The Information is collected from the user in the command-line.
 The manager is prompted to provide their's and the team member's information. The manaer may add as many team members as they want.
 The utility **automatically** assigns an ID to each team member.
 
@@ -31,6 +31,7 @@ The utility **automatically** assigns an ID to each team member.
 
 run <code>node ./app.js</code> and follow the prompts on your screen. Your team.html file will be placed in the 'output' directory.
 ![how to use](./assets/workingDemo.gif)
+![example output html](./assets/output.JPG)
 
 ## Credits
 
