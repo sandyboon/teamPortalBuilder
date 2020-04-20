@@ -41,11 +41,18 @@ async function init() {
 }
 
 function showWelcomeMessage() {
-  console.log('************Welcome to the Team Portal Builder**************');
   console.log(
+    '\x1b[32m',
+    '************Welcome to the Team Portal Builder**************'
+  );
+  console.log(
+    '\x1b[33m',
     'Please note that Employee ID will be generated *AUTOMATICALLY* for every employee you add!'
   );
-  console.log('Please answer a few questions to build a portal for your team');
+  console.log(
+    '\x1b[32m',
+    'Please answer a few questions to build a portal for your team'
+  );
 }
 
 async function getManagerInfo() {
