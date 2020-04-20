@@ -1,5 +1,7 @@
 # teamPoratlBuilder
 
+![node](https://img.shields.io/node/v/latest?style=plastic)
+![code size](https://img.shields.io/github/languages/code-size/sandyboon/teamPortalBuilder)
 ![licenseInformation](https://img.shields.io/apm/l/vim-mode)
 
 ## Table of Contents
@@ -21,13 +23,13 @@ The utility **automatically** assigns an ID to each team member.
 
 ## Installation
 
-- run npm install
-- run node ./app.js
+- run <code>npm install</code>
+- run <code>node ./app.js</code>
 
 ## Usage
 
-run node./app.js and follow the prompts on your screen. Your team.html file will be placed in the 'output' directory.
-![how to use](./assets/workingDemo.gif)
+run <code>node ./app.js</code> and follow the prompts on your screen. Your team.html file will be placed in the 'output' directory.
+![how to use](./assets/workingDemo.mp4)
 
 ## Credits
 
