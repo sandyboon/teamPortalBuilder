@@ -23,6 +23,7 @@ The utility **automatically** assigns an ID to each team member.
 
 ## Installation
 
+- Install node if you haven't already: https://nodejs.org/en/download/
 - run <code>npm install</code>
 - run <code>node ./app.js</code>
 
@@ -46,6 +47,7 @@ Contribution to this project is not permitted at this moment.
 ## Tests
 
 The tests are in the test folder. You can run the test by using the command - <code>npm run test</code>.
+![tests](./assets/tests.JPG)
 
 ## Questions
 
