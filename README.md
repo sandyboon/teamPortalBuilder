@@ -29,7 +29,7 @@ The utility **automatically** assigns an ID to each team member.
 ## Usage
 
 run <code>node ./app.js</code> and follow the prompts on your screen. Your team.html file will be placed in the 'output' directory.
-![how to use](./assets/workingDemo.mp4)
+![how to use](./assets/workingDemo.gif)
 
 ## Credits
 
