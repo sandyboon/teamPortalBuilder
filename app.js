@@ -5,7 +5,9 @@ const IdGenerator = require('./lib/IdGenerator');
 const questions = require('./lib/questions');
 const inquirer = require('inquirer');
 const path = require('path');
+const util = require('util');
 const fs = require('fs');
+const writeFilePromise = util.promisify(fs.writeFile);
 
 const OUTPUT_DIR = path.resolve(__dirname, 'output');
 const outputPath = path.join(OUTPUT_DIR, 'team.html');
@@ -14,6 +16,7 @@ const render = require('./lib/htmlRenderer');
 
 const idProducer = new IdGenerator();
 const employeesInformation = [];
+let renderedHtml = '';
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 async function init() {
@@ -30,7 +33,9 @@ async function init() {
     const employees = employeesInformation.map((empInfo) => {
       return getEmployeeObject(addIdToProvidedInfo(empInfo));
     });
-    console.log(employees);
+    //make sure that the utput dir exists
+    renderedHtml = render(employees);
+    fs.mkdir(OUTPUT_DIR, writeHtmlToFile);
   } catch (error) {
     console.log(error);
   }
@@ -75,26 +80,6 @@ function getQuestionForEmployeeType(employeeType) {
   }
 }
 
-// After the user has input all employees desired, call the `render` function (required
-// above) and pass in an array containing all employee objects; the `render` function will
-// generate and return a block of HTML including templated divs for each employee!
-
-// After you have your html, you're now ready to create an HTML file using the HTML
-// returned from the `render` function. Now write it to a file named `team.html` in the
-// `output` folder. You can use the variable `outputPath` above target this location.
-// Hint: you may need to check if the `output` folder exists and create it if it
-// does not.
-
-// HINT: each employee type (manager, engineer, or intern) has slightly different
-// information; write your code to ask different questions via inquirer depending on
-// employee type.
-
-// HINT: make sure to build out your classes first! Remember that your Manager, Engineer,
-// and Intern classes should all extend from a class named Employee; see the directions
-// for further information. Be sure to test out each class and verify it generates an
-// object with the correct structure and methods. This structure will be crucial in order
-// for the provided `render` function to work! ```
-
 function getEmployeeObject(employeeInfo) {
   let employeeType = employeeInfo.employeeType;
   let employeeObj = null;
@@ -114,14 +99,28 @@ function getEmployeeObject(employeeInfo) {
     default:
       break;
   }
-  console.log(employeeObj);
-  console.log(employeeObj.getRole());
   return employeeObj;
 }
 
 function addIdToProvidedInfo(employeeObj) {
   employeeObj.id = idProducer.getNextId();
   return employeeObj;
+}
+
+/**
+ *
+ * @param {String} fileName
+ * @param {UserResponseObj} data
+ */
+async function writeHtmlToFile(error) {
+  if (error && error.code !== 'EEXIST') {
+    console.log(error);
+    throw new Error('There was an error in creating the output directory!');
+  }
+  await writeFilePromise(outputPath, renderedHtml);
+  console.log(
+    "It's done! Your team portal html is placed in the output folder!"
+  );
 }
 
 init();
